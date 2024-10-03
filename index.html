@@ -46,13 +46,14 @@
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+	<style>
+        body.no-scroll {
+            overflow: hidden; /* Nonaktifkan scroll */
+        }
+    </style>
 
 </head>
-<body>
+<body class="no-scroll">
 
 <div class="fh5co-loader"></div>
 
@@ -98,7 +99,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 						<h1>Ahnan & Vika</h1>
-						<p style="margin-bottom: 0">Kepada Bapak/Ibu/Saudara/i :<br><span class="tamu"></span><br></p>
+						<p style="margin-bottom: 0">Kepada Bapak/Ibu/Saudara/i :<br><br><span class="tamu"></span><br><br></p>
 						
 						
 						<p>Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>
@@ -562,7 +563,12 @@
 	  document.querySelector('.tamu').textContent = tamuName;
 	}
   </script>
-  
+  <script>
+	// Mengaktifkan scroll setelah tombol diklik
+	document.getElementById('open-invitation').addEventListener('click', function() {
+		document.body.classList.remove('no-scroll'); // Hapus kelas no-scroll
+	});
+</script>
 
 </body>
 </html>
