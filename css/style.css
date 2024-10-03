@@ -1659,29 +1659,29 @@ form label {
   transition: 0.5s;
 }
 
-.rsvp {
+.fh5co-testimonial {
   background-color: var(--bg);
 }
 
-.rsvp h2 {
+.fh5co-testimonial h2 {
   font-size: 4.5rem;
 }
 
-.rsvp p {
+.fh5co-testimonial p {
   color: white;
 }
 
-.rsvp form label {
+.fh5co-testimonial form label {
   color: white;
 }
 
-.rsvp button {
+.fh5co-testimonial button {
   background-color: var(--pink);
   color: white;
   border: 1px solid var(--pink);
 }
 
-.rsvp button:hover {
+.fh5co-testimonial button:hover {
   background-color: white;
   color: var(--pink);
   border: 1px solid white;
