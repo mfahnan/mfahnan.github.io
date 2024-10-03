@@ -1430,15 +1430,31 @@ form label {
 #fh5co-testimonial .wrap-testimony .arrow-thumb a:hover, #fh5co-testimonial .wrap-testimony .arrow-thumb a:focus, #fh5co-testimonial .wrap-testimony .arrow-thumb a:active {
   text-decoration: none;
 }
-#fh5co-testimonial .list-group{
-  /*max-height: 250px;*/
-  overflow: auto;
+
+.fh5co-testimonial  {
 }
-#fh5co-testimonial .list-group .name{
-  font-weight: bold;
+
+.fh5co-testimonial h2 {
+  font-size: 4.5rem;
 }
-#fh5co-testimonial #button-send{
-  /*margin-top: 25px;*/
+
+.fh5co-testimonial p {
+  color: white;
+}
+
+.fh5co-testimonial form label {
+  color: white;
+}
+
+.fh5co-testimonial button {
+  color: white;
+  border: 1px solid #0298d4;
+}
+
+.fh5co-testimonial button:hover {
+  background-color: white;
+  color: #0298d4;
+  border: 1px solid white;
 }
 
 .feature-left {
@@ -1658,35 +1674,6 @@ form label {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
-
-.fh5co-testimonial {
-  background-color: var(--bg);
-}
-
-.fh5co-testimonial h2 {
-  font-size: 4.5rem;
-}
-
-.fh5co-testimonial p {
-  color: white;
-}
-
-.fh5co-testimonial form label {
-  color: white;
-}
-
-.fh5co-testimonial button {
-  background-color: var(--pink);
-  color: white;
-  border: 1px solid var(--pink);
-}
-
-.fh5co-testimonial button:hover {
-  background-color: white;
-  color: var(--pink);
-  border: 1px solid white;
-}
-
 
 #fh5co-offcanvas ul li.offcanvas-has-dropdown.active a:after {
   -webkit-transform: rotate(-180deg);
