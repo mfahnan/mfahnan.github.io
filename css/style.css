@@ -245,64 +245,6 @@ h1, h2, h3, h4, h5, h6, figure {
   float: left;
   position: relative;
 }
-
-.fh5co-video {
-  height: 450px;
-  overflow: hidden;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  border-radius: 7px;
-}
-.fh5co-video a {
-  z-index: 1001;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -45px;
-  margin-left: -45px;
-  width: 90px;
-  height: 90px;
-  display: table;
-  text-align: center;
-  background: #fff;
-  -webkit-box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-}
-.fh5co-video a i {
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 40px;
-}
-.fh5co-video .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-.fh5co-video:hover .overlay {
-  background: rgba(0, 0, 0, 0.7);
-}
-.fh5co-video:hover a {
-  position: relative;
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
 .fh5co-cover {
   height: 900px;
   background-size: cover;
@@ -1143,12 +1085,16 @@ form label {
 
 #fh5co-couple{
   /*background-image: url("../images/background/repeat-background/concrete-texture.png");*/
+  margin-top: 60px;
+  margin-bottom: 100px;
   background-repeat : repeat;
   position: relative;
 }
 
 #fh5co-gallery{
   /*background-image: url("../images/background/repeat-background/ep_naturalwhite.png");*/
+  margin-top: 50px;
+  margin-bottom: 50px;
   background-repeat : repeat;
   position: relative;
   overflow: hidden;
@@ -2360,6 +2306,9 @@ fadeIn {  from {
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: cover;
+}
+.copy-btn {
+  margin-left: 10px; /* Mengatur jarak sesuai kebutuhan */
 }
 
 /*# sourceMappingURL=style.css.map */
