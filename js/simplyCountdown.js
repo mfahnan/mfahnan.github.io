@@ -118,10 +118,10 @@
             minutes: 0,
             seconds: 0,
             words: {
-                days: { singular: 'day', plural: 'days' },
-                hours: { singular: 'hour', plural: 'hours' },
-                minutes: { singular: 'minute', plural: 'minutes' },
-                seconds: { singular: 'second', plural: 'seconds' }
+                days: { singular: 'Hari', plural: 'Hari' },
+                hours: { singular: 'Jam', plural: 'Jam' },
+                minutes: { singular: 'Menit', plural: 'Menit' },
+                seconds: { singular: 'Detik', plural: 'Detik' }
             },
             plural: true,
             inline: false,
