@@ -391,38 +391,60 @@
 						</div>
 					</section>
 
+					<style>
+    .rekening-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nomor-rekening {
+        flex-grow: 1;
+        text-align: left;
+    }
+
+    .copy-btn {
+        text-align: right;
+        border-radius: 20px;
+    }
+					</style>
 					<section>
-						<div class="row text-center">
-							<div style="color: black" class="col-md-6 col-md-offset-3">
-								<ul class="list-group">
-									<li class="list-group-item">
-										<div class="fw-bold">BCA</div>
-										0971169884 - MAFTUH AHNAN
-										<button class="btn btn-primary btn-sm copy-btn" style="border: radius 20px"
-											data-account="0971169884">Salin</button>
-									</li>
-									<li class="list-group-item">
-										<div class="fw-bold">BCA</div>
-										5835024943 - PRADITYA VIKA DELA PUSPI
-										<button class="btn btn-primary btn-sm copy-btn" style="border: radius 20px"
-											data-account="5835024943">Salin</button>
-									</li>
-									<li class="list-group-item">
-										<div class="fw-bold">DANA</div>
-										085174451632 - MAFTUH AHNAN
-										<button class="btn btn-primary btn-sm copy-btn" style="border: radius 20px" style="border: radius 20px"
-											data-account="085174451632">Salin</button>
-									</li>
-									<li class="list-group-item">
-										<div class="fw-bold">DANA</div>
-										085839790268 - PRADITYA VIKA DELA PUSPI
-										<button class="btn btn-primary btn-sm copy-btn" style="border: radius 20px" style="border: radius 20px"
-											data-account="085839790268">Salin</button>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section>
+	<div class="row text-center">
+		<div style="color: black" class="col-md-6 col-md-offset-3">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="fw-bold">BCA</div>
+					<div class="rekening-container">
+						<span class="nomor-rekening">0971169884 - MAFTUH AHNAN</span>
+						<button class="btn btn-primary btn-sm copy-btn" style="border-radius: 20px;" data-account="0971169884">Salin</button>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="fw-bold">BCA</div>
+					<div class="rekening-container">
+						<span class="nomor-rekening">5835024943 - PRADITYA VIKA DELA PUSPI</span>
+						<button class="btn btn-primary btn-sm copy-btn" style="border-radius: 20px;" data-account="5835024943">Salin</button>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="fw-bold">DANA</div>
+					<div class="rekening-container">
+						<span class="nomor-rekening">085174451632 - MAFTUH AHNAN</span>
+						<button class="btn btn-primary btn-sm copy-btn" style="border-radius: 20px;" data-account="085174451632">Salin</button>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="fw-bold">DANA</div>
+					<div class="rekening-container">
+						<span class="nomor-rekening">085839790268 - PRADITYA VIKA DELA PUSPI</span>
+						<button class="btn btn-primary btn-sm copy-btn" style="border-radius: 20px;" data-account="085839790268">Salin</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
 
 					<script>
 						document.querySelectorAll('.copy-btn').forEach(button => {
