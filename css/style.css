@@ -1810,14 +1810,15 @@ form label {
   font-family: "Didact Gothic", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  border-radius: 30px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
   padding: 8px 20px;
+  -o-border-radius: 10px;
 }
 .btn.btn-md {
   padding: 8px 20px !important;
@@ -1834,6 +1835,11 @@ form label {
   background:  #0298d4;
   color: #fff;
   border: 2px solid  #0298d4;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: #153f7e !important;
