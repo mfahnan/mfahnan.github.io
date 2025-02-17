@@ -64,7 +64,7 @@ p {
 
 h1, h2, h3, h4, h5, h6, figure {
   color: #000;
-  font-family: "Yanone Kaffeesatz", Arial, sans-serif;
+  font-family: "Oswald", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
 }
@@ -1808,9 +1808,9 @@ form label {
 .btn {
   margin-right: 4px;
   margin-bottom: 4px;
-  font-family: "Didact Gothic", Arial, sans-serif;
+  font-family: Oswald;
   font-size: 16px;
-  font-weight: 400;
+  /* font-weight: ; */
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -2008,9 +2008,10 @@ form label {
 }
 
 .parents-font{
-  font-family: "Estonia", Arial, serif;
-  font-size: 25px;
-  font-weight: bold;
+  font-family: "Yanone Kaffeesatz",
+  Arial,
+  serif;
+  font-size: 20px;
 }
 
 .tanggal{
