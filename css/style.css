@@ -1083,7 +1083,8 @@ form label {
 .simply-countdown > .simply-section > div {
   /* countdown block inner div */
   display: table-cell;
-  vertical-align: middle;
+  /* vertical-align: middle; */
+  padding-top: 15px;
   height: 100px;
   width: 100px;
 }
