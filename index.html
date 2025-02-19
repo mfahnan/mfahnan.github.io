@@ -346,7 +346,6 @@
 								</div>
 							</div>
 
-
 							<div class="col-md-4">
 								<div class="form-group">
 									<label style="color: black" for="status" class="form-label">Kehadiran</label>
@@ -365,23 +364,62 @@
 							</div>
 
 							<div class="col-md-12 text-center" style="margin-top: 20px;">
-								<button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Kirim Ucapan</button>
+								<button class="btn btn-primary" id="submit-btn"><i class="fa fa-paper-plane"></i> Kirim
+									Ucapan</button>
 							</div>
 						</form>
-
-						<script>
-							function validateForm() {
-								var status = document.getElementById("status").value;
-								if (status === "") {
-									alert("Silakan pilih kehadiran terlebih dahulu!");
-									return false; // Hentikan submit
-								}
-								return true; // Lanjutkan submit jika valid
-							}
-						</script>
-
 					</div>
 				</div>
+
+				<!-- Popup Loading -->
+				<div id="loading-popup"
+					style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+					<div style="background: white; padding: 20px; border-radius: 8px; text-align: center;">
+						<p><i class="fa fa-spinner fa-spin"></i> Sedang mengirim, mohon tunggu...</p>
+					</div>
+				</div>
+
+				<script>
+					function validateForm() {
+						var status = document.getElementById("status").value;
+						if (status === "") {
+							alert("Silakan pilih kehadiran terlebih dahulu!");
+							return false;
+						}
+						return true;
+					}
+
+					window.addEventListener("load", function () {
+						const form = document.getElementById('my-form');
+						const loadingPopup = document.getElementById('loading-popup');
+						const submitBtn = document.getElementById('submit-btn');
+
+						form.addEventListener("submit", function (e) {
+							e.preventDefault();
+							loadingPopup.style.display = "flex"; // Tampilkan popup loading
+							submitBtn.disabled = true; // Nonaktifkan tombol agar tidak bisa diklik dua kali
+
+							const data = new FormData(form);
+							const action = e.target.action;
+
+							fetch(action, {
+									method: 'POST',
+									body: data,
+								})
+								.then(() => {
+									loadingPopup.style.display = "none"; // Sembunyikan popup loading
+									alert("Ucapan berhasil terkirim!");
+									form.reset(); // Reset form setelah pengiriman berhasil
+									submitBtn.disabled = false; // Aktifkan kembali tombol
+								})
+								.catch(() => {
+									loadingPopup.style.display = "none"; // Sembunyikan popup loading jika gagal
+									alert("Terjadi kesalahan, silakan coba lagi.");
+									submitBtn.disabled = false; // Aktifkan kembali tombol
+								});
+						});
+					});
+				</script>
 				<hr style="border: 5px solid #1233;">
 			</div>
 		</div>
@@ -392,101 +430,134 @@
 				justify-content: space-between;
 				align-items: center;
 				width: 100%;
-				font-family: Oswald;
+				font-family: Oswald, sans-serif;
 				font-size: 14px;
+				margin-top: 10px;
 			}
 
 			.nomor-rekening {
 				flex-grow: 1;
 				text-align: left;
 				color: black;
-
 			}
 
 			.copy-btn {
 				text-align: right;
+				background-color: #0298d4;
+				border: none;
+				padding: 5px 10px;
+				border-radius: 5px;
+				cursor: pointer;
+				color: white;
+				transition: background 0.3s ease;
+			}
+
+			.copy-btn:hover {
+				background-color: #027bb5;
 			}
 
 			.nama-bank {
-				font-family: Oswald;
+				font-family: Oswald, sans-serif;
+			}
+
+			/* Notifikasi Salin */
+			#copy-toast {
+				display: none;
+				position: fixed;
+				bottom: 20px;
+				left: 50%;
+				transform: translateX(-50%);
+				background: #0298d4;
+				color: white;
+				padding: 10px 20px;
+				border-radius: 5px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 			}
 		</style>
 
-		<section id="gifts" class="gifts">
-			<div id="fh5co-event" class="ucapan" style="border-top: 1px solid #f2f2f2">
-				<div class="container">
-					<div class="row animate-box">
-						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-							<!-- <h3 style="font-family: Oswald; color: black;">KIRIM HADIAH</h3> -->
-							<h2 style="font-family: Dancing Script; color: #0298d4">Amplop Digital</h2>
-							<span style="color:#bf9b73">Jika berkenan memberikan hadiah personal, bisa dikirim
-								melalui rekening
-								berikut.</span>
-						</div>
-					</div>
-
-					<section>
-						<div class="row text-center">
-							<div style="color: black" class="col-md-6 col-md-offset-3">
-								<ul style="box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1)" class="list-group">
-									<li class="list-group-item">
-										<div>
-											<img width=120" height="39"
-												src="https://ehv9nqzx9ct.exactdn.com/wp-content/uploads/2024/04/bca.png?strip=all&lossy=1&w=750&ssl=1"
-												title="bca.png" alt="bca.png">
-										</div>
-										<div class="rekening-container">
-											<span class="nomor-rekening">0971169884 - MAFTUH AHNAN</span>
-											<button class="btn btn-primary btn-sm copy-btn"
-												data-account="0971169884">Salin</button>
-										</div>
-										<div class="rekening-container">
-											<span class="nomor-rekening">5835024943 - PRADITYA VIKA DELA PUSPI</span>
-											<button class="btn btn-primary btn-sm copy-btn"
-												data-account="5835024943">Salin</button>
-										</div>
-									</li>
-
-									<li class="list-group-item">
-										<div>
-											<img width="120" height="39"
-												src="https://ehv9nqzx9ct.exactdn.com/wp-content/uploads/2024/04/dana.png?strip=all&lossy=1&w=750&ssl=1"
-												title="dana.png" alt="dana.png">
-										</div>
-										<div class="rekening-container">
-											<span class="nomor-rekening">085174451632 - MAFTUH AHNAN</span>
-											<button class="btn btn-primary btn-sm copy-btn"
-												data-account="085174451632">Salin</button>
-										</div>
-										<div class="rekening-container">
-											<span class="nomor-rekening">085839790268 - PRADITYA VIKA DELA PUSPI</span>
-											<button class="btn btn-primary btn-sm copy-btn"
-												data-account="085839790268">Salin</button>
-										</div>
-									</li>
-								</ul>
+			<section id="gifts" class="gifts">
+				<div id="fh5co-event" class="ucapan" style="border-top: 1px solid #f2f2f2">
+					<div class="container">
+						<div class="row animate-box">
+							<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+								<h2 style="font-family: Dancing Script; color: #0298d4">Amplop Digital</h2>
+								<span style="color:#bf9b73">Jika berkenan memberikan hadiah personal, bisa dikirim
+									melalui rekening berikut.</span>
 							</div>
 						</div>
-				</div>
-		</section>
 
-		<script>
-			document.querySelectorAll('.copy-btn').forEach(button => {
-				button.addEventListener('click', function () {
-					const accountNumber = this.getAttribute('data-account');
-					const tempInput = document.createElement("input");
-					document.body.appendChild(tempInput);
-					tempInput.value = accountNumber;
-					tempInput.select();
-					document.execCommand("copy");
-					document.body.removeChild(tempInput);
-					alert(`Nomor rekening ${accountNumber} telah disalin!`);
+						<section>
+							<div class="row text-center">
+								<div style="color: black" class="col-md-6 col-md-offset-3">
+									<ul style="box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1)" class="list-group">
+										<li class="list-group-item">
+											<div>
+												<img width="120" height="39"
+													src="https://ehv9nqzx9ct.exactdn.com/wp-content/uploads/2024/04/bca.png?strip=all&lossy=1&w=750&ssl=1"
+													title="bca.png" alt="bca.png">
+											</div>
+											<div class="rekening-container">
+												<span class="nomor-rekening">0971169884 - MAFTUH AHNAN</span>
+												<button class="btn btn-primary btn-sm copy-btn"
+													data-account="0971169884">Salin</button>
+											</div>
+											<div class="rekening-container">
+												<span class="nomor-rekening">5835024943 - PRADITYA VIKA DELA PUSPI</span>
+												<button class="btn btn-primary btn-sm copy-btn"
+													data-account="5835024943">Salin</button>
+											</div>
+										</li>
+
+										<li class="list-group-item">
+											<div>
+												<img width="120" height="39"
+													src="https://ehv9nqzx9ct.exactdn.com/wp-content/uploads/2024/04/dana.png?strip=all&lossy=1&w=750&ssl=1"
+													title="dana.png" alt="dana.png">
+											</div>
+											<div class="rekening-container">
+												<span class="nomor-rekening">085174451632 - MAFTUH AHNAN</span>
+												<button class="btn btn-primary btn-sm copy-btn"
+													data-account="085174451632">Salin</button>
+											</div>
+											<div class="rekening-container">
+												<span class="nomor-rekening">085839790268 - PRADITYA VIKA DELA PUSPI</span>
+												<button class="btn btn-primary btn-sm copy-btn"
+													data-account="085839790268">Salin</button>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+					</div>
+			</section>
+
+			<!-- Notifikasi Salin -->
+			<div id="copy-toast"></div>
+
+			<script>
+				document.querySelectorAll('.copy-btn').forEach(button => {
+					button.addEventListener('click', async function () {
+						const accountNumber = this.getAttribute('data-account');
+						try {
+							await navigator.clipboard.writeText(accountNumber);
+
+							// Tampilkan notifikasi
+							const toast = document.getElementById("copy-toast");
+							toast.innerText = `Nomor rekening ${accountNumber} telah disalin!`;
+							toast.style.display = "block";
+
+							// Sembunyikan setelah 2 detik
+							setTimeout(() => {
+								toast.style.display = "none";
+							}, 2000);
+						} catch (err) {
+							console.error("Gagal menyalin!", err);
+							alert("Gagal menyalin nomor rekening. Silakan coba lagi.");
+						}
+					});
 				});
-			});
-		</script>
+			</script>
 
-	</div>
-	</section>
 
 
 	<footer id="fh5co-footer" role="contentinfo"
@@ -689,20 +760,36 @@
 	<script>
 		window.addEventListener("load", function () {
 			const form = document.getElementById('my-form');
+			const loadingPopup = document.getElementById('loading-popup');
+			const submitBtn = document.getElementById('submit-btn');
+
 			form.addEventListener("submit", function (e) {
 				e.preventDefault();
+				loadingPopup.style.display = "flex"; // Tampilkan popup loading
+				submitBtn.disabled = true; // Nonaktifkan tombol agar tidak bisa diklik dua kali
+
 				const data = new FormData(form);
 				const action = e.target.action;
+
 				fetch(action, {
 						method: 'POST',
 						body: data,
 					})
 					.then(() => {
+						loadingPopup.style.display = "none"; // Sembunyikan popup loading
 						alert("Ucapan berhasil terkirim!");
+						form.reset(); // Reset form setelah pengiriman berhasil
+						submitBtn.disabled = false; // Aktifkan kembali tombol
 					})
+					.catch(() => {
+						loadingPopup.style.display = "none"; // Sembunyikan popup loading jika gagal
+						alert("Terjadi kesalahan, silakan coba lagi.");
+						submitBtn.disabled = false; // Aktifkan kembali tombol
+					});
 			});
 		});
 	</script>
+
 
 	<!-- isi nama tamu -->
 	<script>
