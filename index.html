@@ -45,6 +45,9 @@
 		integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -732,39 +735,55 @@
 	<!-- form kehadiran -->
 	<script>
 		window.addEventListener("load", function () {
-			const form = document.getElementById('my-form');
-			const loadingPopup = document.getElementById('loading-popup');
-			const submitBtn = document.getElementById('submit-btn');
+		const form = document.getElementById('my-form');
+		const loadingPopup = document.getElementById('loading-popup');
+		const submitBtn = document.getElementById('submit-btn');
 
-			function handleSubmit(e) {
-				e.preventDefault(); // Mencegah reload halaman
-				loadingPopup.style.display = "flex"; // Menampilkan popup loading
-				submitBtn.disabled = true; // Mencegah klik dua kali
+		function handleSubmit(e) {
+		e.preventDefault();
+		loadingPopup.style.display = "flex";
+		submitBtn.disabled = true;
 
-				const data = new FormData(form);
-				const action = form.action;
+		const data = new FormData(form);
+		const action = form.action;
 
-				fetch(action, {
-						method: 'POST',
-						body: data,
-					})
-					.then(() => {
-						loadingPopup.style.display = "none"; // Sembunyikan popup loading
-						alert("Ucapan berhasil terkirim!");
-						form.reset(); // Reset form setelah berhasil
-						submitBtn.disabled = false; // Aktifkan kembali tombol
-					})
-					.catch(() => {
-						loadingPopup.style.display = "none"; // Sembunyikan popup loading jika gagal
-						alert("Terjadi kesalahan, silakan coba lagi.");
-						submitBtn.disabled = false; // Aktifkan kembali tombol
-					});
-			}
-
-			// Hapus event listener sebelumnya jika ada
-			form.removeEventListener("submit", handleSubmit);
-			form.addEventListener("submit", handleSubmit);
+		fetch(action, {
+		method: 'POST',
+		body: data,
+		})
+		.then(() => {
+		loadingPopup.style.display = "none";
+		Swal.fire({
+		icon: 'success',
+		title: 'Berhasil!',
+		text: 'Ucapan berhasil terkirim.',
+		timer: 3000,
+		showConfirmButton: false,
+		toast: true,
+		position: 'top-end'
 		});
+		form.reset();
+		submitBtn.disabled = false;
+		})
+		.catch(() => {
+		loadingPopup.style.display = "none";
+		Swal.fire({
+		icon: 'error',
+		title: 'Gagal!',
+		text: 'Terjadi kesalahan, silakan coba lagi.',
+		timer: 3000,
+		showConfirmButton: false,
+		toast: true,
+		position: 'top-end'
+		});
+		submitBtn.disabled = false;
+		});
+		}
+
+		form.removeEventListener("submit", handleSubmit);
+		form.addEventListener("submit", handleSubmit);
+		});
+
 	</script>
 
 
