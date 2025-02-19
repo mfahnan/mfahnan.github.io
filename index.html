@@ -432,8 +432,9 @@
 				font-family: Oswald, sans-serif;
 			}
 
+			/* 
 			/* Notifikasi Salin */
-			#copy-toast {
+			/* #copy-toast {
 				display: none;
 				position: fixed;
 				top: 50%;
@@ -448,7 +449,8 @@
 				font-weight: bold;
 				text-align: center;
 				z-index: 9999;
-			}
+			} */
+			*/
 		</style>
 
 		<section id="gifts" class="gifts">
@@ -507,9 +509,6 @@
 				</div>
 		</section>
 
-		<!-- Notifikasi Salin -->
-		<div id="copy-toast"></div>
-
 		<script>
 			document.querySelectorAll('.copy-btn').forEach(button => {
 				button.addEventListener('click', async function () {
@@ -517,18 +516,29 @@
 					try {
 						await navigator.clipboard.writeText(accountNumber);
 
-						// Tampilkan notifikasi
-						const toast = document.getElementById("copy-toast");
-						toast.innerText = `Nomor rekening ${accountNumber} telah disalin!`;
-						toast.style.display = "block";
+						// SweetAlert2 Toast
+						Swal.fire({
+							icon: 'success',
+							title: 'Berhasil Disalin!',
+							text: `Nomor rekening ${accountNumber} telah disalin ke clipboard.`,
+							toast: true,
+							position: 'top-end',
+							showConfirmButton: false,
+							timer: 2500,
+							timerProgressBar: true
+						});
 
-						// Sembunyikan setelah 2 detik
-						setTimeout(() => {
-							toast.style.display = "none";
-						}, 2000);
 					} catch (err) {
 						console.error("Gagal menyalin!", err);
-						alert("Gagal menyalin nomor rekening. Silakan coba lagi.");
+						Swal.fire({
+							icon: 'error',
+							title: 'Gagal!',
+							text: 'Nomor rekening tidak bisa disalin. Coba lagi!',
+							toast: true,
+							position: 'top-end',
+							showConfirmButton: false,
+							timer: 2500
+						});
 					}
 				});
 			});
@@ -735,55 +745,54 @@
 	<!-- form kehadiran -->
 	<script>
 		window.addEventListener("load", function () {
-		const form = document.getElementById('my-form');
-		const loadingPopup = document.getElementById('loading-popup');
-		const submitBtn = document.getElementById('submit-btn');
+			const form = document.getElementById('my-form');
+			const loadingPopup = document.getElementById('loading-popup');
+			const submitBtn = document.getElementById('submit-btn');
 
-		function handleSubmit(e) {
-		e.preventDefault();
-		loadingPopup.style.display = "flex";
-		submitBtn.disabled = true;
+			function handleSubmit(e) {
+				e.preventDefault();
+				loadingPopup.style.display = "flex";
+				submitBtn.disabled = true;
 
-		const data = new FormData(form);
-		const action = form.action;
+				const data = new FormData(form);
+				const action = form.action;
 
-		fetch(action, {
-		method: 'POST',
-		body: data,
-		})
-		.then(() => {
-		loadingPopup.style.display = "none";
-		Swal.fire({
-		icon: 'success',
-		title: 'Berhasil!',
-		text: 'Ucapan berhasil terkirim.',
-		timer: 3000,
-		showConfirmButton: false,
-		toast: true,
-		position: 'top-end'
+				fetch(action, {
+						method: 'POST',
+						body: data,
+					})
+					.then(() => {
+						loadingPopup.style.display = "none";
+						Swal.fire({
+							icon: 'success',
+							title: 'Berhasil!',
+							text: 'Ucapan berhasil terkirim.',
+							timer: 3000,
+							showConfirmButton: false,
+							toast: true,
+							position: 'top-end'
+						});
+						form.reset();
+						submitBtn.disabled = false;
+					})
+					.catch(() => {
+						loadingPopup.style.display = "none";
+						Swal.fire({
+							icon: 'error',
+							title: 'Gagal!',
+							text: 'Terjadi kesalahan, silakan coba lagi.',
+							timer: 3000,
+							showConfirmButton: false,
+							toast: true,
+							position: 'top-end'
+						});
+						submitBtn.disabled = false;
+					});
+			}
+
+			form.removeEventListener("submit", handleSubmit);
+			form.addEventListener("submit", handleSubmit);
 		});
-		form.reset();
-		submitBtn.disabled = false;
-		})
-		.catch(() => {
-		loadingPopup.style.display = "none";
-		Swal.fire({
-		icon: 'error',
-		title: 'Gagal!',
-		text: 'Terjadi kesalahan, silakan coba lagi.',
-		timer: 3000,
-		showConfirmButton: false,
-		toast: true,
-		position: 'top-end'
-		});
-		submitBtn.disabled = false;
-		});
-		}
-
-		form.removeEventListener("submit", handleSubmit);
-		form.addEventListener("submit", handleSubmit);
-		});
-
 	</script>
 
 
