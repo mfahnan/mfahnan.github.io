@@ -332,56 +332,60 @@
 					<div class="container">
 						<div class="row text-center">
 							<div class="col-md-8 col-md-offset-2">
-								<h3 style="font-family: Oswald; color: black;">KIRIM UCAPAN</h3>
+								<!-- <h3 style="font-family: Oswald; color: black;">KIRIM UCAPAN</h3> -->
 								<span style="color:#bf9b73">Demi kelancaran acara dimohon untuk para tamu undangan untuk memastikan kehadirannya pada acara kami.</span>
 							</div>
 						</div>
 					</div>
-					<form class="row" method="POST"
-						action="https://script.google.com/macros/s/AKfycbzcNHFnZAFykHBIfKEuxHM0M5cekE6M_z9ae6Ld49hP78TCVJj_IhVsk2H23hG-HEf6/exec"
-						id="my-form" onsubmit="return validateForm()">
+					<div class="col-md-6 col-sm-6 text-center">
+						<div class="event-wrap animate-box">
+							<form class="row" method="POST"
+								action="https://script.google.com/macros/s/AKfycbzcNHFnZAFykHBIfKEuxHM0M5cekE6M_z9ae6Ld49hP78TCVJj_IhVsk2H23hG-HEf6/exec"
+								id="my-form" onsubmit="return validateForm()">
 
-						<div class="col-md-4">
-							<div class="form-group">
-								<label style="color: black" class="form-label">Nama</label>
-								<input type="text" class="form-control" id="nama" name="nama" required>
-							</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label style="color: black" class="form-label">Nama</label>
+										<input type="text" class="form-control" id="nama" name="nama" required>
+									</div>
+								</div>
+
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<label style="color: black" for="status" class="form-label">Kehadiran</label>
+										<select name="status" id="status" class="form-control" required>
+											<option value="Hadir">Hadir</option>
+											<option value="Tidak Hadir">Tidak Hadir</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label style="color: black" for="ucapan" class="form-label">Ucapan</label>
+										<textarea class="form-control" id="ucapan" name="ucapan" rows="3"
+											placeholder="Tulis ucapan di sini..." required></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-12 text-center" style="margin-top: 20px;">
+									<button class="btn btn-primary">Kirim Ucapan</button>
+								</div>
+							</form>
+
+							<script>
+								function validateForm() {
+									var status = document.getElementById("status").value;
+									if (status === "") {
+										alert("Silakan pilih kehadiran terlebih dahulu!");
+										return false; // Hentikan submit
+									}
+									return true; // Lanjutkan submit jika valid
+								}
+							</script>
+
 						</div>
-				
-
-						<div class="col-md-4">
-							<div class="form-group">
-								<label style="color: black" for="status" class="form-label">Kehadiran</label>
-								<select name="status" id="status" class="form-control" required>
-									<option value="Hadir">Hadir</option>
-									<option value="Tidak Hadir">Tidak Hadir</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label style="color: black" for="ucapan" class="form-label">Ucapan</label>
-								<textarea class="form-control" id="ucapan" name="ucapan" rows="3" placeholder="Tulis ucapan di sini..."
-									required></textarea>
-							</div>
-						</div>
-
-						<div class="col-md-12 text-center" style="margin-top: 20px;">
-							<button class="btn btn-primary">Kirim Ucapan</button>
-						</div>
-					</form>
-
-					<script>
-						function validateForm() {
-							var status = document.getElementById("status").value;
-							if (status === "") {
-								alert("Silakan pilih kehadiran terlebih dahulu!");
-								return false; // Hentikan submit
-							}
-							return true; // Lanjutkan submit jika valid
-						}
-					</script>
-
+					</div>
 					<hr style="border: 5px solid #1233;">
 
 					<section id="gifts" class="gifts">
