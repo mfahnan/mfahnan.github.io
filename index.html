@@ -332,8 +332,8 @@
 					<div class="container">
 						<div class="row text-center">
 							<div class="col-md-8 col-md-offset-2">
-								<h3 style="font-family: Oswald; color: black;">KONFIRMASI KEHADIRAN</h3>
-								<span style="color:#bf9b73">Isi form di bawah ini untuk melakukan konfirmasi kehadiran.</span>
+								<h3 style="font-family: Oswald; color: black;">KIRIM UCAPAN</h3>
+								<span style="color:#bf9b73">Demi kelancaran acara dimohon untuk para tamu undangan untuk memastikan kehadirannya pada acara kami.</span>
 							</div>
 						</div>
 					</div>
@@ -347,7 +347,17 @@
 								<input type="text" class="form-control" id="nama" name="nama" required>
 							</div>
 						</div>
+				
 
+						<div class="col-md-4">
+							<div class="form-group">
+								<label style="color: black" for="status" class="form-label">Kehadiran</label>
+								<select name="status" id="status" class="form-control" required>
+									<option value="Hadir">Hadir</option>
+									<option value="Tidak Hadir">Tidak Hadir</option>
+								</select>
+							</div>
+						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label style="color: black" for="ucapan" class="form-label">Ucapan</label>
@@ -356,19 +366,8 @@
 							</div>
 						</div>
 
-						<div class="col-md-4">
-							<div class="form-group">
-								<label style="color: black" for="status" class="form-label">Konfirmasi</label>
-								<select name="status" id="status" class="form-control" required>
-									<option value="">Pilih salah satu</option>
-									<option value="Hadir">Hadir</option>
-									<option value="Tidak Hadir">Tidak Hadir</option>
-								</select>
-							</div>
-						</div>
-
 						<div class="col-md-12 text-center" style="margin-top: 20px;">
-							<button class="btn btn-primary">Konfirmasi</button>
+							<button class="btn btn-primary">Kirim Ucapan</button>
 						</div>
 					</form>
 
